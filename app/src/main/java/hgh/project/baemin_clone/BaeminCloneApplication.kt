@@ -2,12 +2,18 @@ package hgh.project.baemin_clone
 
 import android.app.Application
 import android.content.Context
+import hgh.project.baemin_clone.di.appModule
+import org.koin.core.context.startKoin
 
 class BaeminCloneApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
         appContext =this
+
+        startKoin {
+            modules(appModule)
+        }
     }
 
     override fun onTerminate() {
