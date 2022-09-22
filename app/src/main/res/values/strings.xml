@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Baemin_clone</string>
+    <string name="home">홈</string>
+    <string name="my">My</string>
+    <string name="fast_delivery">배달 바른 순</string>
+    <string name="low_delivery_tip">배달팁 낮은 순</string>
+    <string name="default_order">기본 순</string>
+    <string name="top_rate">별점 높은 순</string>
+    <string name="initalize">초기화</string>
 </resources>
