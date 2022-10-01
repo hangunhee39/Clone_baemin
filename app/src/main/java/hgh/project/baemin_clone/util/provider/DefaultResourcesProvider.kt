@@ -13,7 +13,7 @@ class DefaultResourcesProvider(
     override fun getString(@StringRes resId: Int): String = context.getString(resId)
 
     override fun getString(@StringRes resId: Int, vararg formArgs: Any): String
-        = context.getString(resId, formArgs)
+        = context.getString(resId, *formArgs)       //가변인자에 * 붙여서 표시해야 한다
 
     override fun getColor(@ColorRes resId: Int): Int = ContextCompat.getColor(context, resId)
 

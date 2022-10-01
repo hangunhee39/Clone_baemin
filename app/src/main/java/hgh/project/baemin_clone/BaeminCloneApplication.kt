@@ -3,6 +3,7 @@ package hgh.project.baemin_clone
 import android.app.Application
 import android.content.Context
 import hgh.project.baemin_clone.di.appModule
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
 class BaeminCloneApplication: Application() {
@@ -12,6 +13,7 @@ class BaeminCloneApplication: Application() {
         appContext =this
 
         startKoin {
+            androidContext(this@BaeminCloneApplication)
             modules(appModule)
         }
     }

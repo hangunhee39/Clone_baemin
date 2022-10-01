@@ -8,6 +8,7 @@ import hgh.project.baemin_clone.screen.base.BaseViewModel
 import hgh.project.baemin_clone.util.mapper.ModelViewHolderMapper
 import hgh.project.baemin_clone.util.provider.ResourceProvider
 import hgh.project.baemin_clone.widget.adapter.listener.AdapterListener
+import hgh.project.baemin_clone.widget.adapter.listener.restaurant.RestaurantListListener
 import hgh.project.baemin_clone.widget.adapter.viewholder.ModelVIewHolder
 
 class ModelRecyclerAdapter<M : Model, VM : BaseViewModel>(
@@ -38,7 +39,7 @@ class ModelRecyclerAdapter<M : Model, VM : BaseViewModel>(
         }
     }
 
-    override fun submitList(list: MutableList<Model>?) {
+    override fun submitList(list: List<Model>?) {
         list?.let {
             modelList =it }
         super.submitList(list)
