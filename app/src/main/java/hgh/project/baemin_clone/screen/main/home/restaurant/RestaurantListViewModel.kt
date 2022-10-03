@@ -2,8 +2,7 @@ package hgh.project.baemin_clone.screen.main.home.restaurant
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import hgh.project.baemin_clone.data.entity.RestaurantEntity
-import hgh.project.baemin_clone.data.respository.RestaurantRepository
+import hgh.project.baemin_clone.data.respository.restaurant.RestaurantRepository
 import hgh.project.baemin_clone.model.restaurant.RestaurantModel
 import hgh.project.baemin_clone.screen.base.BaseViewModel
 import kotlinx.coroutines.Job

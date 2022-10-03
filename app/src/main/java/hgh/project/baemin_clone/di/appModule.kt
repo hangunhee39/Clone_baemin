@@ -1,7 +1,9 @@
 package hgh.project.baemin_clone.di
 
-import hgh.project.baemin_clone.data.respository.DefaultRestaurantRepository
-import hgh.project.baemin_clone.data.respository.RestaurantRepository
+import hgh.project.baemin_clone.data.respository.map.DefaultMapRepository
+import hgh.project.baemin_clone.data.respository.map.MapRepository
+import hgh.project.baemin_clone.data.respository.restaurant.DefaultRestaurantRepository
+import hgh.project.baemin_clone.data.respository.restaurant.RestaurantRepository
 import hgh.project.baemin_clone.screen.main.home.HomeViewModel
 import hgh.project.baemin_clone.screen.main.home.restaurant.RestaurantCategory
 import hgh.project.baemin_clone.screen.main.home.restaurant.RestaurantListViewModel
@@ -15,7 +17,7 @@ import org.koin.dsl.module
 
 val appModule = module {
 
-    viewModel { HomeViewModel() }
+    viewModel { HomeViewModel( get()) }
     viewModel { MyViewModel() }
     viewModel { (restaurantCategory: RestaurantCategory) ->
         RestaurantListViewModel(
@@ -25,10 +27,13 @@ val appModule = module {
     }
 
     single<RestaurantRepository> { DefaultRestaurantRepository(get(), get()) }
+    single<MapRepository> {DefaultMapRepository(get(), get())}
 
     single { provideGsonConvertFactory() }
     single { buildOkHttpClient() }
-    single { provideRetrofit(get(), get()) }
+
+    single { provideMapRetrofit(get(), get()) }
+    single { provideMapApiService(get())}
 
     single<ResourceProvider> { DefaultResourcesProvider(androidApplication()) }
 

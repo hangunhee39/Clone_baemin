@@ -54,7 +54,4 @@ abstract class BaseFragment<VM: BaseViewModel, VB: ViewBinding>: Fragment() {
         super.onDestroy()
     }
 
-
-
-
 }
