@@ -3,6 +3,7 @@ package hgh.project.baemin_clone.screen.main.home.restaurant
 import android.util.Log
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import hgh.project.baemin_clone.data.entity.LocationLatLongEntity
 import hgh.project.baemin_clone.databinding.FragmentRestaurantListBinding
 import hgh.project.baemin_clone.model.restaurant.RestaurantModel
 import hgh.project.baemin_clone.screen.base.BaseFragment
@@ -16,9 +17,20 @@ import org.koin.core.parameter.parametersOf
 class RestaurantListFragment :
     BaseFragment<RestaurantListViewModel, FragmentRestaurantListBinding>() {
 
+    //category 는 enum class 이고 location 은 data class 에 parcelable 을 상속했기 때문에 다르다
     private val restaurantCategory by lazy { arguments?.getSerializable(RESTAURANT_CATEGORY_KEY) as RestaurantCategory } //(homefragment)에서 넘어온 카테고리 저장
+    private val locationLatLng by lazy {
+        arguments?.getParcelable<LocationLatLongEntity>(
+            LOCATION_KEY
+        )
+    }
 
-    override val viewModel by viewModel<RestaurantListViewModel> { parametersOf(restaurantCategory) }
+    override val viewModel by viewModel<RestaurantListViewModel> {
+        parametersOf(
+            restaurantCategory,
+            locationLatLng
+        )
+    }
 
     override fun getViewBinding(): FragmentRestaurantListBinding =
         FragmentRestaurantListBinding.inflate(layoutInflater)
@@ -33,13 +45,13 @@ class RestaurantListFragment :
             resourceProvider,
             adapterListener = object : RestaurantListListener {
                 override fun onClickItem(model: RestaurantModel) {
-                    Toast.makeText(requireContext(),"$model",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "$model", Toast.LENGTH_SHORT).show()
                 }
             })
     }
 
-    override fun initViews() = with(binding){
-        recyclerView.adapter =adapter
+    override fun initViews() = with(binding) {
+        recyclerView.adapter = adapter
     }
 
     override fun observeData() = viewModel.restaurantListLiveData.observe(viewLifecycleOwner) {
@@ -49,11 +61,16 @@ class RestaurantListFragment :
 
     companion object {
         const val RESTAURANT_CATEGORY_KEY = "restaurantCategory"
+        const val LOCATION_KEY = "location"
 
-        fun newInstance(restaurantCategory: RestaurantCategory): RestaurantListFragment {
+        fun newInstance(
+            restaurantCategory: RestaurantCategory,
+            locationLatLng: LocationLatLongEntity
+        ): RestaurantListFragment {
             return RestaurantListFragment().apply {
                 arguments = bundleOf(
-                    RESTAURANT_CATEGORY_KEY to restaurantCategory   //serializable 하게 만듬
+                    RESTAURANT_CATEGORY_KEY to restaurantCategory,   //serializable 하게 만듬
+                    LOCATION_KEY to locationLatLng
                 )
             }
         }

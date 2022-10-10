@@ -16,8 +16,8 @@ abstract class BaseActivity<VM: BaseViewModel, VB: ViewBinding>: AppCompatActivi
 
     private lateinit var fetchJob: Job
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         binding = getViewBinding()
         setContentView(binding.root)
         initState()
@@ -34,7 +34,7 @@ abstract class BaseActivity<VM: BaseViewModel, VB: ViewBinding>: AppCompatActivi
     abstract fun observeData()
 
     override fun onDestroy() {
-        if (fetchJob.isActive){
+        if (fetchJob.isActive) {
             fetchJob.cancel()
         }
         super.onDestroy()

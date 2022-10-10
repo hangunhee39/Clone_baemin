@@ -2,6 +2,7 @@ package hgh.project.baemin_clone.screen.main.home.restaurant
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import hgh.project.baemin_clone.data.entity.LocationLatLongEntity
 import hgh.project.baemin_clone.data.respository.restaurant.RestaurantRepository
 import hgh.project.baemin_clone.model.restaurant.RestaurantModel
 import hgh.project.baemin_clone.screen.base.BaseViewModel
@@ -10,13 +11,14 @@ import kotlinx.coroutines.launch
 
 class RestaurantListViewModel(
     private val restaurantCategory: RestaurantCategory,
+    private var locationLatLongEntity: LocationLatLongEntity,
     private val restaurantRepository: RestaurantRepository
 ) : BaseViewModel() {
 
     val restaurantListLiveData = MutableLiveData<List<RestaurantModel>>()
 
     override fun fetchData(): Job = viewModelScope.launch {
-        val restaurantList = restaurantRepository.getList(restaurantCategory)
+        val restaurantList = restaurantRepository.getList(restaurantCategory, locationLatLongEntity)
         restaurantListLiveData.value = restaurantList.map {
             RestaurantModel(
                 id = it.id,
@@ -31,5 +33,10 @@ class RestaurantListViewModel(
 
             )
         }
+    }
+
+    fun setLocationLatLng(locationLatLongEntity: LocationLatLongEntity) {
+        this.locationLatLongEntity = locationLatLongEntity
+        fetchData()
     }
 }
