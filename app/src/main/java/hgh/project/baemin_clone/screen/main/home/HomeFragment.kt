@@ -21,6 +21,7 @@ import hgh.project.baemin_clone.databinding.FragmentHomeBinding
 import hgh.project.baemin_clone.screen.base.BaseFragment
 import hgh.project.baemin_clone.screen.main.home.restaurant.RestaurantCategory
 import hgh.project.baemin_clone.screen.main.home.restaurant.RestaurantListFragment
+import hgh.project.baemin_clone.screen.main.home.restaurant.RestaurantOrder
 import hgh.project.baemin_clone.screen.mylocation.MyLocationActivity
 import hgh.project.baemin_clone.widget.adapter.RestaurantListFragmentPagerAdapter
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -78,6 +79,36 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                 )
             }
         }
+        filterChipGroup.setOnCheckedChangeListener { _, checkedId ->
+            when(checkedId){
+                R.id.chipDefault -> {
+                    chipInitialize.isGone = true
+                    changeRestaurantOrder(RestaurantOrder.DEFAULT)
+                }
+                R.id.chipInitialize ->{
+                    chipDefault.isChecked= true
+                }
+                R.id.chipLowDeliveryTip->{
+                    chipInitialize.isVisible = true
+                    changeRestaurantOrder(RestaurantOrder.LOW_DELIVERY_TIP)
+                }
+                R.id.chipFastDelivery ->{
+                    chipInitialize.isVisible = true
+                    changeRestaurantOrder(RestaurantOrder.FAST_DELIVERY)
+                }
+                R.id.chipTopRate ->{
+                    chipInitialize.isVisible = true
+                    changeRestaurantOrder(RestaurantOrder.TOP_LATE)
+                }
+            }
+        }
+    }
+
+    //배달 빠른순등으로 정렬
+    private fun changeRestaurantOrder(order:RestaurantOrder){
+        viewPagerAdapter.fragmentList.forEach{
+            it.viewModel.setRestaurantOrder(order)
+        }
 
     }
 
@@ -86,6 +117,8 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
         val restaurantCategories = RestaurantCategory.values()
 
         if (::viewPagerAdapter.isInitialized.not()) {
+            filterChipGroup.isVisible =true
+            //카테고리에 따라 나누기
             val restaurantListFragmentList = restaurantCategories.map {
                 RestaurantListFragment.newInstance(it , locationLatLongEntity)
             }
