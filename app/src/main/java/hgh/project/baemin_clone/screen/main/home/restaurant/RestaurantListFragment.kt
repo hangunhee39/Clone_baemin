@@ -7,6 +7,7 @@ import hgh.project.baemin_clone.data.entity.LocationLatLongEntity
 import hgh.project.baemin_clone.databinding.FragmentRestaurantListBinding
 import hgh.project.baemin_clone.model.restaurant.RestaurantModel
 import hgh.project.baemin_clone.screen.base.BaseFragment
+import hgh.project.baemin_clone.screen.main.home.restaurant.detail.RestaurantDetailActivity
 import hgh.project.baemin_clone.util.provider.ResourceProvider
 import hgh.project.baemin_clone.widget.adapter.ModelRecyclerAdapter
 import hgh.project.baemin_clone.widget.adapter.listener.restaurant.RestaurantListListener
@@ -45,7 +46,12 @@ class RestaurantListFragment :
             resourceProvider,
             adapterListener = object : RestaurantListListener {
                 override fun onClickItem(model: RestaurantModel) {
-                    Toast.makeText(requireContext(), "$model", Toast.LENGTH_SHORT).show()
+                    startActivity(
+                        RestaurantDetailActivity.newIntent(
+                            requireContext(),
+                            model.toEntity()
+                        )
+                    )
                 }
             })
     }
@@ -62,6 +68,7 @@ class RestaurantListFragment :
     companion object {
         const val RESTAURANT_CATEGORY_KEY = "restaurantCategory"
         const val LOCATION_KEY = "location"
+        const val RESTAURANT_KEY ="restaurant"
 
         fun newInstance(
             restaurantCategory: RestaurantCategory,

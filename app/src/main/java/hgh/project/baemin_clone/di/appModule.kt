@@ -2,6 +2,7 @@ package hgh.project.baemin_clone.di
 
 import hgh.project.baemin_clone.data.entity.LocationLatLongEntity
 import hgh.project.baemin_clone.data.entity.MapSearchInfoEntity
+import hgh.project.baemin_clone.data.entity.RestaurantEntity
 import hgh.project.baemin_clone.data.respository.map.DefaultMapRepository
 import hgh.project.baemin_clone.data.respository.map.MapRepository
 import hgh.project.baemin_clone.data.respository.restaurant.DefaultRestaurantRepository
@@ -11,6 +12,7 @@ import hgh.project.baemin_clone.data.respository.user.UserRepository
 import hgh.project.baemin_clone.screen.main.home.HomeViewModel
 import hgh.project.baemin_clone.screen.main.home.restaurant.RestaurantCategory
 import hgh.project.baemin_clone.screen.main.home.restaurant.RestaurantListViewModel
+import hgh.project.baemin_clone.screen.main.home.restaurant.detail.RestaurantDetailViewModel
 import hgh.project.baemin_clone.screen.main.my.MyViewModel
 import hgh.project.baemin_clone.screen.mylocation.MyLocationViewModel
 import hgh.project.baemin_clone.util.provider.DefaultResourcesProvider
@@ -39,10 +41,11 @@ val appModule = module {
             get()
         )
     }
+    viewModel { (restaurantEntity: RestaurantEntity) -> RestaurantDetailViewModel(restaurantEntity, get()) }
 
     single<RestaurantRepository> { DefaultRestaurantRepository(get(), get(), get()) }
     single<MapRepository> { DefaultMapRepository(get(), get()) }
-    single<UserRepository> {DefaultUserRepository(get(), get())}
+    single<UserRepository> {DefaultUserRepository(get(), get(), get())}
 
     single { provideGsonConvertFactory() }
     single { buildOkHttpClient() }
@@ -52,6 +55,7 @@ val appModule = module {
 
     single { provideDB(androidApplication()) }
     single { provideLocationDao(get())}
+    single { provideRestaurantDao(get()) }
 
     single<ResourceProvider> { DefaultResourcesProvider(androidApplication()) }
 

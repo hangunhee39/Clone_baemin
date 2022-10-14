@@ -79,6 +79,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                 )
             }
         }
+        //정렬 기준 선택
         filterChipGroup.setOnCheckedChangeListener { _, checkedId ->
             when(checkedId){
                 R.id.chipDefault -> {

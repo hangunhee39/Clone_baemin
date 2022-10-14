@@ -8,12 +8,12 @@ import kotlinx.coroutines.flow.Flow
 interface LocationDao {
 
     @Query("SELECT * FROM LocationLatLongEntity WHERE id=:id")
-    fun get(id: Long): LocationLatLongEntity
+    fun get(id: Long): LocationLatLongEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(locationLatLngEntity: LocationLatLongEntity)
+     fun insert(locationLatLngEntity: LocationLatLongEntity)
 
     @Query("DELETE FROM LocationLatLongEntity WHERE id=:id")
-    fun delete(id: Long)
+     fun delete(id: Long)
 
 }
