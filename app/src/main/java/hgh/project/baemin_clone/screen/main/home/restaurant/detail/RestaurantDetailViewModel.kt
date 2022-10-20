@@ -99,6 +99,7 @@ class RestaurantDetailViewModel(
         }
     }
 
+    //장바구니 비워서 needClear 를 false 로 바꾸기
     fun notifyClearBasket()=viewModelScope.launch {
         when(val data = restaurantDetailStateLiveData.value){
             is RestaurantDetailState.Success ->{

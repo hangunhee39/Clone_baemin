@@ -33,5 +33,8 @@
     <string name="delivery_expected_time">%1$d~%2$d분 소요 예정</string>
     <string name="delivery_tip_range">%1$,d원 ~ %2$,d원</string>
     <string name="basket_count">+%d</string>
+    <string name="logout">로그아웃</string>
+    <string name="empty_orders_text">주문 리스트가 존재하지 않습니다.</string>
+    <string name="google_login_text">구글 로그인이 필요합니다</string>
 
 </resources>

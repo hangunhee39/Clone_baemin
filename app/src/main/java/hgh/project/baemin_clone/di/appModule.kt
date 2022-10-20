@@ -10,6 +10,8 @@ import hgh.project.baemin_clone.data.respository.map.DefaultMapRepository
 import hgh.project.baemin_clone.data.respository.map.MapRepository
 import hgh.project.baemin_clone.data.respository.restaurant.DefaultRestaurantRepository
 import hgh.project.baemin_clone.data.respository.restaurant.RestaurantRepository
+import hgh.project.baemin_clone.data.respository.review.DefaultRestaurantReviewRepository
+import hgh.project.baemin_clone.data.respository.review.RestaurantReviewRepository
 import hgh.project.baemin_clone.data.respository.user.DefaultUserRepository
 import hgh.project.baemin_clone.data.respository.user.UserRepository
 import hgh.project.baemin_clone.screen.main.home.HomeViewModel
@@ -61,12 +63,13 @@ val appModule = module {
             get()
         )
     }
-    viewModel { RestaurantReviewListViewModel() }
+    viewModel { (restaurantTitle: String) -> RestaurantReviewListViewModel(restaurantTitle, get()) }
 
     single<RestaurantRepository> { DefaultRestaurantRepository(get(), get(), get()) }
     single<MapRepository> { DefaultMapRepository(get(), get()) }
     single<UserRepository> { DefaultUserRepository(get(), get(), get()) }
     single<RestaurantFoodRepository> { DefaultRestaurantFoodRepository(get(), get(), get()) }
+    single<RestaurantReviewRepository> { DefaultRestaurantReviewRepository(get()) }
 
     single { provideGsonConvertFactory() }
     single { buildOkHttpClient() }

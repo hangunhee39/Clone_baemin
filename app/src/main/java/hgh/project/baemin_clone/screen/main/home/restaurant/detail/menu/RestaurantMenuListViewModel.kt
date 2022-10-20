@@ -20,6 +20,7 @@ class RestaurantMenuListViewModel(
 
     val menuBasketLiveData = MutableLiveData<RestaurantFoodEntity>()
 
+    //다른가게에 음식이 들어올때
     val isClearNeedInBasketLiveData = MutableLiveData<Pair<Boolean, () -> Unit>>()
 
     override fun fetchData(): Job = viewModelScope.launch {
@@ -38,9 +39,9 @@ class RestaurantMenuListViewModel(
 
     //장바구니에는 한 가게에 음식만 있게 (다른 가게아이템을 선택하면 다 비우고 다시 시작)
     fun insertMenuInBasket(foodModel: FoodModel) = viewModelScope.launch {
-        val restaurantMenuListOnBasket =
+        val restaurantMenuListInBasket =
             restaurantFoodRepository.getFoodMenuListInBasket(restaurantId)
-        val foodMenuEntity = foodModel.toEntity(restaurantMenuListOnBasket.size)
+        val foodMenuEntity = foodModel.toEntity(restaurantMenuListInBasket.size)
         val anotherRestaurantMenuListInBasket =
             restaurantFoodRepository.getAllFoodMenuListInBasket().filter {
                 it.restaurantId != restaurantId
@@ -54,6 +55,7 @@ class RestaurantMenuListViewModel(
         }
     }
 
+    //RestaurantDetailActivity -> alertClearNeedInBasket 함수에서 실행..
     private fun clearMenuAndInsertNewMenuInBasket(foodMenuEntity: RestaurantFoodEntity) =
         viewModelScope.launch {
             restaurantFoodRepository.clearFoodMenuListInBasket()

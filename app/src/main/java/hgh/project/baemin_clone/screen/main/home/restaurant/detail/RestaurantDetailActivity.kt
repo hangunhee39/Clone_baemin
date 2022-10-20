@@ -92,11 +92,12 @@ class RestaurantDetailActivity :
         )
 
         if (::viewPagerAdapter.isInitialized.not()) {
-            initViewPager(state.restaurantEntity.restaurantInfoId, state.restaurantFoodList)
+            initViewPager(state.restaurantEntity.restaurantTitle,state.restaurantEntity.restaurantInfoId, state.restaurantFoodList)
         }
 
         notifyBasketCount(state.foodMenuListInBasket)
 
+        //기존 장바구니 비우고 새로운 food 담기
         val (isClearNeed, afterAction) = state.isClearNeedInBasketAndAction
         if (isClearNeed){
             alertClearNeedInBasket(afterAction)
@@ -104,6 +105,7 @@ class RestaurantDetailActivity :
     }
 
     private fun initViewPager(
+        restaurantTitle: String,
         restaurantInfoId: Long,
         restaurantFoodList: List<RestaurantFoodEntity>?
     ) {
@@ -114,7 +116,7 @@ class RestaurantDetailActivity :
                     restaurantInfoId,
                     ArrayList(restaurantFoodList ?: listOf())
                 ),
-                RestaurantReviewListFragment.newInstance(restaurantInfoId)
+                RestaurantReviewListFragment.newInstance(restaurantTitle)
             )
         )
         binding.menuAndReviewViewPager.adapter = viewPagerAdapter
