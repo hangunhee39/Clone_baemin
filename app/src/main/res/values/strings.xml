@@ -14,6 +14,9 @@
     <string name="delivery_time">%1$d~%2$d분</string>
     <string name="delivery_tip">배달팁 %1$,d원~%2$,d원</string>
 
+    <!-- Menu item -->
+    <string name="price">%d,원</string>
+
     <!--homeFragment -->
     <string name="please_setup_location">위치 권한을 설정해주세요!</string>
     <string name="can_not_assigned_permission">권한을 받지 못했습니다</string>
@@ -29,5 +32,6 @@
     <string name="share">공유</string>
     <string name="delivery_expected_time">%1$d~%2$d분 소요 예정</string>
     <string name="delivery_tip_range">%1$,d원 ~ %2$,d원</string>
+    <string name="basket_count">+%d</string>
 
 </resources>

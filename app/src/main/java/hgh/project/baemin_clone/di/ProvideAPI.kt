@@ -1,6 +1,7 @@
 package hgh.project.baemin_clone.di
 
 import hgh.project.baemin_clone.BuildConfig
+import hgh.project.baemin_clone.data.network.FoodApiService
 import hgh.project.baemin_clone.data.network.MapApiService
 import hgh.project.baemin_clone.data.url.Url
 import okhttp3.OkHttpClient
@@ -11,6 +12,10 @@ import java.util.concurrent.TimeUnit
 
 fun provideMapApiService(retrofit: Retrofit): MapApiService {
     return retrofit.create(MapApiService::class.java)
+}
+
+fun provideFoodApiService(retrofit: Retrofit): FoodApiService {
+    return retrofit.create(FoodApiService::class.java)
 }
 
 fun provideMapRetrofit(
@@ -24,15 +29,26 @@ fun provideMapRetrofit(
         .build()
 }
 
+fun provideFoodRetrofit(
+    okHttpClient: OkHttpClient,
+    gsonConverterFactory: GsonConverterFactory
+): Retrofit {
+    return Retrofit.Builder()
+        .baseUrl(Url.FOOD_URL)
+        .addConverterFactory(gsonConverterFactory)
+        .client(okHttpClient)
+        .build()
+}
+
 fun provideGsonConvertFactory(): GsonConverterFactory {
     return GsonConverterFactory.create()
 }
 
 fun buildOkHttpClient(): OkHttpClient {
     val interceptor = HttpLoggingInterceptor()
-    if (BuildConfig.DEBUG){
+    if (BuildConfig.DEBUG) {
         interceptor.level = HttpLoggingInterceptor.Level.BODY
-    } else{
+    } else {
         interceptor.level = HttpLoggingInterceptor.Level.NONE
     }
     return OkHttpClient.Builder()
