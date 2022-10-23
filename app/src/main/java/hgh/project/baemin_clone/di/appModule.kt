@@ -21,6 +21,7 @@ import hgh.project.baemin_clone.screen.main.home.restaurant.RestaurantListViewMo
 import hgh.project.baemin_clone.screen.main.home.restaurant.detail.RestaurantDetailViewModel
 import hgh.project.baemin_clone.screen.main.home.restaurant.detail.menu.RestaurantMenuListViewModel
 import hgh.project.baemin_clone.screen.main.home.restaurant.detail.review.RestaurantReviewListViewModel
+import hgh.project.baemin_clone.screen.main.like.RestaurantLikeListViewModel
 import hgh.project.baemin_clone.screen.main.my.MyViewModel
 import hgh.project.baemin_clone.screen.mylocation.MyLocationViewModel
 import hgh.project.baemin_clone.util.provider.DefaultResourcesProvider
@@ -35,6 +36,7 @@ val appModule = module {
 
     viewModel { HomeViewModel(get(), get(), get()) }
     viewModel { MyViewModel(get()) }
+    viewModel { RestaurantLikeListViewModel(get()) }
     viewModel { (restaurantCategory: RestaurantCategory,
                     locationLatLng: LocationLatLongEntity) ->
         RestaurantListViewModel(

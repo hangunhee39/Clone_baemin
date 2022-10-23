@@ -3,10 +3,7 @@ package hgh.project.baemin_clone.util.mapper
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.ViewParent
-import hgh.project.baemin_clone.databinding.ViewholderEmptyBinding
-import hgh.project.baemin_clone.databinding.ViewholderFoodMenuBinding
-import hgh.project.baemin_clone.databinding.ViewholderRestaurantBinding
-import hgh.project.baemin_clone.databinding.ViewholderRestaurantReviewBinding
+import hgh.project.baemin_clone.databinding.*
 import hgh.project.baemin_clone.model.CellType
 import hgh.project.baemin_clone.model.Model
 import hgh.project.baemin_clone.screen.base.BaseViewModel
@@ -14,6 +11,7 @@ import hgh.project.baemin_clone.util.provider.ResourceProvider
 import hgh.project.baemin_clone.widget.adapter.viewholder.EmptyViewHolder
 import hgh.project.baemin_clone.widget.adapter.viewholder.ModelVIewHolder
 import hgh.project.baemin_clone.widget.adapter.viewholder.food.FoodMenuViewHolder
+import hgh.project.baemin_clone.widget.adapter.viewholder.restaurant.LikeRestaurantViewHolder
 import hgh.project.baemin_clone.widget.adapter.viewholder.restaurant.RestaurantViewHolder
 import hgh.project.baemin_clone.widget.adapter.viewholder.review.RestaurantReviewViewHolder
 
@@ -35,6 +33,11 @@ object ModelViewHolderMapper {
             )
             CellType.RESTAURANT_CELL -> RestaurantViewHolder(
                 ViewholderRestaurantBinding.inflate(inflater, parent, false),
+                viewModel,
+                resourceProvider
+            )
+            CellType.LIKE_RESTAURANT_CELL-> LikeRestaurantViewHolder(
+                ViewholderLikeRestaurantBinding.inflate(inflater, parent, false),
                 viewModel,
                 resourceProvider
             )

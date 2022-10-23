@@ -8,6 +8,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import hgh.project.baemin_clone.R
 import hgh.project.baemin_clone.databinding.ActivityMainBinding
 import hgh.project.baemin_clone.screen.main.home.HomeFragment
+import hgh.project.baemin_clone.screen.main.like.RestaurantLikeListFragment
 import hgh.project.baemin_clone.screen.main.my.MyFragment
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
@@ -30,6 +31,10 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         return when(item.itemId){
             R.id.menu_home ->{
                 showFragment(HomeFragment.newInstance(), HomeFragment.TAG)
+                true
+            }
+            R.id.menu_like->{
+                showFragment(RestaurantLikeListFragment.newInstance(), RestaurantLikeListFragment.TAG)
                 true
             }
             R.id.menu_my ->{
