@@ -4,6 +4,7 @@ import hgh.project.baemin_clone.data.entity.LocationLatLongEntity
 import hgh.project.baemin_clone.data.entity.MapSearchInfoEntity
 import hgh.project.baemin_clone.data.entity.RestaurantEntity
 import hgh.project.baemin_clone.data.entity.RestaurantFoodEntity
+import hgh.project.baemin_clone.data.preference.AppPreferenceManager
 import hgh.project.baemin_clone.data.respository.food.DefaultRestaurantFoodRepository
 import hgh.project.baemin_clone.data.respository.food.RestaurantFoodRepository
 import hgh.project.baemin_clone.data.respository.map.DefaultMapRepository
@@ -33,7 +34,7 @@ import org.koin.dsl.module
 val appModule = module {
 
     viewModel { HomeViewModel(get(), get(), get()) }
-    viewModel { MyViewModel() }
+    viewModel { MyViewModel(get()) }
     viewModel { (restaurantCategory: RestaurantCategory,
                     locationLatLng: LocationLatLongEntity) ->
         RestaurantListViewModel(
@@ -85,6 +86,8 @@ val appModule = module {
     single { provideFoodMenuDao(get()) }
 
     single<ResourceProvider> { DefaultResourcesProvider(androidApplication()) }
+
+    single { AppPreferenceManager(androidApplication()) }
 
     single { Dispatchers.IO }
     single { Dispatchers.Main }

@@ -34,7 +34,7 @@ class HomeViewModel(
         val addressInfo =mapRepository.getReverseGeoInformation(currentLocation)
         addressInfo?.let { info ->
             homeStateLiveData.value = HomeState.Success(
-               mapSearchInfo = info.toSearchInfoEntity(locationLatLongEntity),
+               mapSearchInfo = info.toSearchInfoEntity(currentLocation),
                 isLocationSame =  currentLocation ==locationLatLongEntity  //현재위치와 사용자위치 비교해서 맞는지 확인 물어보기
             )
         } ?: kotlin.run {
