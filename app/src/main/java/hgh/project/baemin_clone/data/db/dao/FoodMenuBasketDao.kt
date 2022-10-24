@@ -22,7 +22,7 @@ interface FoodMenuBasketDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(restaurantFoodEntity: RestaurantFoodEntity)
 
-    @Query("DELETE FROM RestaurantEntity WHERE id=:foodId")
+    @Query("DELETE FROM RestaurantFoodEntity WHERE id=:foodId")
     fun delete(foodId: String)
 
     @Query("DELETE FROM RestaurantFoodEntity")

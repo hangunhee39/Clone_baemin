@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "508878547890-gcdqqeekur80uku1n2tt6hg9qvuorijd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "hgh.project.baemin_clone",
+            "certificate_hash": "3ca93fc5f7e9148d47d720a28dc71e2852bc202f"
+          }
+        },
+        {
           "client_id": "508878547890-ffcl7vupejrsv3ecjfg0g9f5bp6eg0if.apps.googleusercontent.com",
           "client_type": 3
         }

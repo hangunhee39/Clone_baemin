@@ -14,6 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Baemin_clone">
+
         <activity
             android:name=".screen.main.MainActivity"
             android:exported="true">
@@ -26,6 +27,9 @@
         <activity android:name=".screen.mylocation.MyLocationActivity" />
         <activity
             android:name=".screen.main.home.restaurant.detail.RestaurantDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screen.order.OrderMenuListActivity"
             android:exported="false" />
 
         <meta-data

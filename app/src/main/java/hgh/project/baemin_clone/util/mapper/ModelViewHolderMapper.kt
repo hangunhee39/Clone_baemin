@@ -11,6 +11,7 @@ import hgh.project.baemin_clone.util.provider.ResourceProvider
 import hgh.project.baemin_clone.widget.adapter.viewholder.EmptyViewHolder
 import hgh.project.baemin_clone.widget.adapter.viewholder.ModelVIewHolder
 import hgh.project.baemin_clone.widget.adapter.viewholder.food.FoodMenuViewHolder
+import hgh.project.baemin_clone.widget.adapter.viewholder.order.OrderMenuViewHolder
 import hgh.project.baemin_clone.widget.adapter.viewholder.restaurant.LikeRestaurantViewHolder
 import hgh.project.baemin_clone.widget.adapter.viewholder.restaurant.RestaurantViewHolder
 import hgh.project.baemin_clone.widget.adapter.viewholder.review.RestaurantReviewViewHolder
@@ -49,6 +50,11 @@ object ModelViewHolderMapper {
             CellType.REVIEW_CELL -> RestaurantReviewViewHolder(
                 ViewholderRestaurantReviewBinding.inflate(inflater,parent, false),
                 viewModel, resourceProvider
+            )
+            CellType.ORDER_FOOD_CELL-> OrderMenuViewHolder(
+                ViewholderOrderMenuBinding.inflate(inflater, parent, false),
+                viewModel,
+                resourceProvider
             )
         }
         return viewHolder as ModelVIewHolder<M>

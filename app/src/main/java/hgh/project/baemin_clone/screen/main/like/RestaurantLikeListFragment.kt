@@ -59,6 +59,10 @@ class RestaurantLikeListFragment:BaseFragment<RestaurantLikeListViewModel, Fragm
 
     override fun initViews() {
         binding.recyclerView.adapter = adapter
+        binding.freshLayout.setOnRefreshListener {
+            viewModel.fetchData()
+            binding.freshLayout.isRefreshing =false
+        }
     }
 
     companion object {

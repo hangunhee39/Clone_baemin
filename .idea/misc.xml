@@ -14,6 +14,7 @@
         <entry key="..\:/Clone_baemin/app/src/main/res/drawable/ic_refresh.xml" value="0.278" />
         <entry key="..\:/Clone_baemin/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
         <entry key="..\:/Clone_baemin/app/src/main/res/layout/activity_my_location.xml" value="0.36614583333333334" />
+        <entry key="..\:/Clone_baemin/app/src/main/res/layout/activity_order_menu_list.xml" value="0.25271739130434784" />
         <entry key="..\:/Clone_baemin/app/src/main/res/layout/activity_restaurant_detail.xml" value="0.36614583333333334" />
         <entry key="..\:/Clone_baemin/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/Clone_baemin/app/src/main/res/layout/fragment_list.xml" value="0.36614583333333334" />
@@ -22,6 +23,7 @@
         <entry key="..\:/Clone_baemin/app/src/main/res/layout/fragment_restaurant_list.xml" value="0.36614583333333334" />
         <entry key="..\:/Clone_baemin/app/src/main/res/layout/viewholder_food_menu.xml" value="0.36614583333333334" />
         <entry key="..\:/Clone_baemin/app/src/main/res/layout/viewholder_like_restaurant.xml" value="0.21739130434782608" />
+        <entry key="..\:/Clone_baemin/app/src/main/res/layout/viewholder_order_menu.xml" value="0.36614583333333334" />
         <entry key="..\:/Clone_baemin/app/src/main/res/layout/viewholder_restaurant.xml" value="0.36614583333333334" />
         <entry key="..\:/Clone_baemin/app/src/main/res/layout/viewholder_restaurant_review.xml" value="0.33" />
         <entry key="..\:/Clone_baemin/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.36614583333333334" />

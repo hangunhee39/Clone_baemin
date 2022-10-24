@@ -30,6 +30,9 @@ class HomeViewModel(
         val userLocation = userRepository.getUserLocation()
         val currentLocation = userLocation ?: locationLatLongEntity
 
+//        val test = LocationLatLongEntity(
+//            37.4605, 126.6911
+//        )
         homeStateLiveData.value = HomeState.Loading
         val addressInfo =mapRepository.getReverseGeoInformation(currentLocation)
         addressInfo?.let { info ->
