@@ -24,7 +24,7 @@ class RestaurantDetailViewModel(
             restaurantEntity = restaurantEntity
         )
         restaurantDetailStateLiveData.value = RestaurantDetailState.Loading
-        val foods =restaurantFoodRepository.getFoods(restaurantId = restaurantEntity.restaurantInfoId)
+        val foods =restaurantFoodRepository.getFoods(restaurantId = restaurantEntity.restaurantInfoId, restaurantTitle = restaurantEntity.restaurantTitle)
         //like 가 있으면 다시Success 해서 띄운다
         val isLiked = userRepository.getUserLikedRestaurant(restaurantEntity.restaurantTitle) !=null
         val foodMenuListInBasket = restaurantFoodRepository.getAllFoodMenuListInBasket()

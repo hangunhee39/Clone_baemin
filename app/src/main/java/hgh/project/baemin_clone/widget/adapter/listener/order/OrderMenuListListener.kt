@@ -6,4 +6,5 @@ import hgh.project.baemin_clone.widget.adapter.listener.AdapterListener
 interface OrderMenuListListener: AdapterListener {
 
     fun onRemoveItem(model: FoodModel)
+
 }

@@ -1,6 +1,5 @@
 package hgh.project.baemin_clone.screen.main.home.restaurant.detail.review
 
-import hgh.project.baemin_clone.data.entity.RestaurantReviewEntity
 import hgh.project.baemin_clone.model.review.RestaurantReviewModel
 
 sealed class RestaurantReviewState{
